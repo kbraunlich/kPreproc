@@ -11,7 +11,6 @@
 % echo time=30
 % slice thickness=4
 % TR=2
-% spaceBetween slices=4
 % flip angle=76
 % NOTE -- eastern MNI template.
 %% --------------
