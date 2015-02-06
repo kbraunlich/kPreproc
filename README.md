@@ -4,6 +4,7 @@
 
 Dependencies:
 -SPM8
+
 -from the wagerlab: SCN_Core_Support and diagnostics toolboxes (http://wagerlab.colorado.edu/tools)
 
 
