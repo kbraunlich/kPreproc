@@ -2,7 +2,7 @@
 
 -This toolbox supports flexible and automatic preprocessing of fMRI data. —It transforms dicoms into normalized & smoothed nifti files, and includes several quality assurance steps.
 
-#Dependencies:
+##Dependencies:
 
 -SPM8
 
