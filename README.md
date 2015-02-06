@@ -2,14 +2,14 @@
 
 -This toolbox supports flexible and automatic preprocessing of fMRI data. —It transforms dicoms into normalized & smoothed nifti files, and includes several quality assurance steps.
 
-Dependencies:
+#Dependencies:
 
 -SPM8
 
 -from the wagerlab: SCN_Core_Support and diagnostics toolboxes (http://wagerlab.colorado.edu/tools)
 
 
-STEPS
+#STEPS
 Create File Structure
 -edit and run a__makeDirs.m. This will create the necessary file structure in an existing folder.
 
@@ -30,7 +30,7 @@ TO RUN:
 
 - Towards the end, it will ask you to check co-registration for each sub and run. As with manual alignment, this requires interacting with the gui and command window.
 
-NOTE ABOUT MANUAL ALIGNMENT:
+#NOTE ABOUT MANUAL ALIGNMENT:
 - the “new segment” tool is quite good at segmentation and normalization, given rough initial alignment (origin on the AC, and proper orientation along planes (sagittal= acpc plane) ). Accordingly, the first thing the script will do is open the SPM gui and load the first anatomical image. (Read the spm8 manual for how to use it). 
 
 - After entering appropriate parameters, reorient all, and select every image for that sub (anat and all functionals for all runs). The script will pause at this point until you interact with the command window.  —Press “1” and then “enter” to confirm that everything looks good — the script will then run for a while and then bring up the next anat img.
