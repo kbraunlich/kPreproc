@@ -20,7 +20,7 @@ a__PREPROC.m
 This is the primary script for the toolbox. It will guide you through manual alignment of the imported nii’s, automate all remaining steps through smoothing, and then guide you through manual quality assurance of coregistration. QA info can be found in the sub qa directories (e.g. s001/qa).
 
 ###To run:
-- open and edit the “settings” section in a__PREPROC.m.  
+open and edit the “settings” section in a__PREPROC.m.  
 
 - the first step is manual realignment. As this step is a bit difficult to get right in one shot, I typically run it in matlab cell mode. Note, if you mess-up the initial coregistration between  images, you may need to re-import.
 
