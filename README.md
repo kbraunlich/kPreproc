@@ -1,8 +1,9 @@
 # kPreproc
 
--This toolbox supports flexible and automatic preprocessing of fMRI data. —It transforms dicoms into normalized & smoothed nifti files. 
+-This toolbox supports flexible and automatic preprocessing of fMRI data. —It transforms dicoms into normalized & smoothed nifti files, and includes several quality assurance steps.
 
 Dependencies:
+
 -SPM8
 
 -from the wagerlab: SCN_Core_Support and diagnostics toolboxes (http://wagerlab.colorado.edu/tools)
