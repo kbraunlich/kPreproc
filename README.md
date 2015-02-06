@@ -2,9 +2,9 @@
 
 ##Dependencies:
 
--SPM8
+- SPM8
 
--from the wagerlab: SCN_Core_Support and diagnostics toolboxes (http://wagerlab.colorado.edu/tools)
+- from the wagerlab: SCN_Core_Support and diagnostics toolboxes (http://wagerlab.colorado.edu/tools)
 
 
 ##Steps
