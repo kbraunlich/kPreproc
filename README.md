@@ -9,20 +9,20 @@
 
 ##Steps
 Create File Structure
--edit and run a__makeDirs.m. This will create the necessary file structure in an existing folder.
+- edit and run a__makeDirs.m. This will create the necessary file structure in an existing folder.
 
 Import Dicoms
 - open and edit the two files in the A_Import folder. These scripts convert the anatomical and functional dcm files to nii. They also rename the images and move them to appropriate folders. 
 
--this step also drops unwanted volumes from the beginning of each functional run. Take heed of this number and include it in a__PREPROC.m. 
+- this step also drops unwanted volumes from the beginning of each functional run. Take heed of this number and include it in a__PREPROC.m. 
 
 a__PREPROC.m
 This is the primary script for the toolbox. It will guide you through manual alignment of the imported nii’s, automate all remaining steps through smoothing, and then guide you through manual quality assurance of coregistration. QA info can be found in the sub qa directories (e.g. s001/qa).
 
 ###To run:
--open and edit the “settings” section in a__PREPROC.m.  
+- open and edit the “settings” section in a__PREPROC.m.  
 
---the first step is manual realignment. As this step is a bit difficult to get right in one shot, I typically run it in matlab cell mode. Note, if you mess-up the initial coregistration between  images, you may need to re-import.
+- the first step is manual realignment. As this step is a bit difficult to get right in one shot, I typically run it in matlab cell mode. Note, if you mess-up the initial coregistration between  images, you may need to re-import.
 
 - After manually aligning images, I typically comment out this section, and run the entire script. 
 
