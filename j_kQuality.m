@@ -1,5 +1,5 @@
-% this is just tors canlab_qw_metrics1 wrapped so that it is more convenient
-% run for individual runs
+% this is just a hacked version of tors canlab_qw_metrics1-- to be more convenient here.
+
 
 function j_kQuality(mriFldr,sub, run)
 
