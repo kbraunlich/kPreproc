@@ -1,3 +1,5 @@
+% quickly create mean anatomical images for subs, given standard file structure
+
 function kMeanAnat(subs,mriFldr)
 %%
 
