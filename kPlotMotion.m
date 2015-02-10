@@ -1,3 +1,4 @@
+% from https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=spm;29083d7c.0911
 
 function kPlotMotion(mcFldr,voxSize,pauseAfterEach)
 clf
