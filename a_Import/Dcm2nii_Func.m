@@ -5,71 +5,50 @@ clear mex
 clc
 
 %% ====== SETTINGS ============================================
-subs=[4];
-runs=[2];
+subs=[3];
+runs=[1:3];
 skipped_vols=3;
-mri_fldr='/Volumes/Sarapiqui/valueAcmltr/mriData';
+mriFldr='/Volumes/Ernie/dev/nipype/extrapTutorialData/mriData';
 
 frmt= 'nii';    % 'img' or 'nii'
-nTRs=420;       % total (before drop)
+nTRs=550;       % total (before drop)
 %% -------------------------------------------------------------
-run_names={['004_ep2d_pace_428v'],['005_ep2d_pace_428v'],'006_ep2d_pace_428v'};
+run_names={['004_ep2d_pace_550v'],['005_ep2d_pace_550v'],'006_ep2d_pace_550v'};
 spm_get_defaults;
 
 for s=1:numel(subs)
     sub=subs(s);
-    % find path to dicom:
-    inFldr=([mri_fldr '/s' sprintf('%3.3d',sub) '/raw']);
-    l=dir([inFldr '/*']);
-    l = l(arrayfun(@(x) x.name(1), l) ~= '.');
-    inFldr=[inFldr '/' l.name];
-    disp(['inFldr: ' inFldr])
+
     
     for r=1:numel(runs)
         run=runs(r);
-        cd([inFldr '/' run_names{run}]);
-        files = spm_select('list', pwd, '\.dcm');
+        inFldr=filenames([mriFldr '/s' sprintf('%3.3d',sub) '/raw/*' run_names{run} '*'],'char');
+
+        files=filenames([inFldr '/*.dcm'],'char')
         files=files(skipped_vols+1:nTRs,:); 
         
         if numel(files(:,1))==0; error('no files found');end
         
-        hdr = spm_dicom_headers(files);
-        out_fldr=[mri_fldr '/s' sprintf('%3.3d',sub) '/r' num2str(run) '/import'];
+        hdrs = spm_dicom_headers(files);
+        out_fldr=[mriFldr '/s' sprintf('%3.3d',sub) '/r' num2str(run) '/import'];
         disp(out_fldr);
         
         if ~exist(out_fldr,'dir');mkdir(out_fldr);end
-        
-        spm_dicom_convert(hdr,'all','flat',frmt); % (hdr,opts,root_dir,format)
-        newFiles=dir('f*.nii');
-        
+        cd(inFldr)
+        spm_dicom_convert(hdrs,'all','flat',frmt); % (hdr,opts,root_dir,format)
+        newFiles=filenames([inFldr '/f*.nii'],'char');
         % check
-        nFiles=length(newFiles);
+        nFiles=length(newFiles(:,1));
         if nFiles~=nTRs-skipped_vols
             error('wrong number of files')
         end
         % move files to new dir
         for i=1:nFiles
-            movefile([inFldr '/' run_names{run} '/' newFiles(i).name],[out_fldr '/' newFiles(i).name])
+            [p,oldname,e]=fileparts(newFiles(i,:));
+            new_nii_name=['_s' sprintf('%3.3d',sub) '_r' num2str(run) '_' oldname(end-6:end-3) '.nii'];
+            movefile([newFiles(i,:)],[out_fldr '/' new_nii_name])
         end
         
-        
-        % rename files
-        % =================================
-        cd(out_fldr)
-        % imported functional files will have a prefix 'f'
-        old_nii_names = dir('f*.nii');
-        for n = 1:length(old_nii_names)
-            % need to count file name characters to determine the right
-            % range
-            % new file names will the the form of 'subjID-runx-0001.nii' PROB
-            % CHANGE TO "name(26:28)"
-            new_nii_name=['_s' sprintf('%3.3d',sub) '_r' num2str(run) '_' old_nii_names(n).name(end-9:end-7) '.nii'];
-            
-            %move niis
-            movefile(old_nii_names(n).name,new_nii_name);
-            
-        end
-        % ---------------------------------
         
         disp(['finished renaming ' num2str(nFiles) ' files']);
         disp(' ');
