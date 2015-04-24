@@ -32,7 +32,7 @@ nSlices=33;                                 %
 TA=TR-(TR/nSlices);                         %
 refSlice=19;                                % 
 
-fwhm=6;                                     % smoothing (scalar --assumes iso)
+fwhm=6;                                     % smoothing (scalar)
 
 % slice order -----------------
 sliceOrder=[1:2:nSlices 2:2:nSlices];       % ascending interleaved
